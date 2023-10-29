@@ -106,6 +106,10 @@ fi
 #Start installation process for specific ISO
 if [[$ISO == debian]]; then
     bash deb.sh
-else 
+elif [[$ISO == debian]]; then
     bash arch.sh
+else
+echo "No compatible ISO found"
+sleep 3
+exit
 fi
