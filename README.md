@@ -1,11 +1,18 @@
-# Debian-titus
-Debian customizations from Chris Titus Tech
+# Arch & Debian Automated Setup
+Scripts to set up a new machine. 
  
-### To install:
+
+## Current state:
+Script installs dwm in debian.
+On arch it is broken.
+
+### To do:
+Set up arch to be able to install hyperland or dwm.
+Clean up arch code. 
 
 ```
-git clone https://github.com/ChrisTitusTech/debian-titus
-cd debian-titus
-sudo ./install.sh
+git clone https://github.com/Dev8904/personal-adl
+cd personal-adl
+sudo ./start.sh
 ```
 
