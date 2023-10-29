@@ -104,7 +104,7 @@ else
 fi
 
 #Start installation process for specific ISO
-if [[$ISO == debian]] then
+if [[$ISO == debian]]; then
     bash deb.sh
 else 
     bash arch.sh
