@@ -106,7 +106,7 @@ fi
 #Start installation process for specific ISO
 if [[$ISO == debian]]; then
     bash deb.sh
-elif [[$ISO == debian]]; then
+elif [[$ISO == archlinux]]; then
     bash arch.sh
 else
 echo "No compatible ISO found"
