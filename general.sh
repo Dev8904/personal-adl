@@ -21,7 +21,7 @@ INSTLOG="install.log"
 #Personal configs
 copyconfig_file=(
     #gtk-2.0
-    "$installed_dir/settings/gtk-2.0/" "$HOME/.config/gtk-2.0"
+    "$installed_dir/settings/gtk-2.0/" "$HOME/.config/gtk-2.0/"
     #gtk-3.0
     "$installed_dir/settings/gtk-3.0/" "$HOME/.config/gtk-3.0"
     "$installed_dir/settings/bookmarks/bookmarks" "$HOME/.config/gtk-3.0/bookmarks"
@@ -44,8 +44,8 @@ copyconfig_file=(
     #screenkey
     "$installed_dir/settings/screenkey/screenkey.json" "$HOME/.config"
     #thunar
-    "$installed_dir/settings/thunar/uca.xml" "$HOME/.config/Thunar"
-    "$installed_dir/settings/thunar/uca.xml" "/etc/skel/.config/Thunar"
+    "$installed_dir/settings/thunar/uca.xml" "$HOME/.config/thunar"
+    "$installed_dir/settings/thunar/uca.xml" "/etc/skel/.config/thunar"
     #neofetch
     "$installed_dir/settings/neofetch/config.conf" "$HOME/.config/neofetch"
     "$installed_dir/settings/neofetch/config.conf" "/etc/skel/.config/neofetch"
