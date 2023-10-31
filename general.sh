@@ -83,7 +83,9 @@ copyconfig_file=(
     #vitualbox
     "$installed_dir/settings/virtualbox-template/" "$USER_HOME/vm"
     #lightdm
-   "$installed_dir/settings/lightdm/"* "/etc/lightdm/"
+   "$installed_dir/settings/lightdm/backgrounds/wallpaper.jpg" "/etc/lightdm/backgrounds/wallpaper.jpg"
+   "$installed_dir/settings/lightdm/lightdm.conf.d/100-usr.conf" "/etc/lightdm/lightdm.conf.d/100-usr.conf"
+   "$installed_dir/settings/lightdm/slick-greeter.conf" "/etc/lightdm/slick-greeter.conf"
     #emacs
     "$installed_dir/settings/emacs/" "$USER_HOME/.config/emacs"
     #gimp
