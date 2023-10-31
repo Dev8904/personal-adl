@@ -33,7 +33,7 @@ bash general.sh
 chown -R $username:$username /home/$username
 
 # Installing Essential Programs 
-nala install feh kitty picom thunar nitrogen lxpolkit x11-xserver-utils unzip wget pulseaudio pulseeffects tlp brightnessctl pavucontrol variety build-essential libx11-dev libxft-dev libxinerama-dev -y
+nala install feh kitty picom thunar nitrogen lxpolkit x11-xserver-utils unzip wget pulseaudio pulseeffects tlp brightnessctl pavucontrol variety build-essential libx11-dev libxft-dev libimlib2-dev libxinerama-dev -y
 # Installing Other less important Programs
 nala install neofetch flameshot psmisc mangohud code lxappearance papirus-icon-theme lxappearance meld mintstick catfish zenity gitfiend tldr fonts-noto-color-emoji lightdm -y
 
