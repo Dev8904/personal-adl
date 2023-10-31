@@ -105,7 +105,6 @@ vaderconfig_file=(
 main_dir=(
     #"$USER_HOME/.config/kvantum"
     "$USER_HOME/.config/gtk-3.0"
-    "/etc/X11/xorg.conf.d/"
     "$USER_HOME/.config/variety"
     "$USER_HOME/.config/thunar"
     "$USER_HOME/.config/neofetch"
@@ -134,6 +133,8 @@ main_dir=(
     "$USER_HOME/internxt"
     "$USER_HOME/torrents"
     "$USER_HOME/vm"
+    "/etc/X11/xorg.conf.d/"
+    "/etc/lightdm/backgrounds/"
 ) 
 
 git_files=(
