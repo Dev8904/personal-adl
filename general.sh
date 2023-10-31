@@ -23,7 +23,7 @@ copyconfig_file=(
     #gtk-2.0
     "$installed_dir/settings/gtk-2.0/" "$HOME/.config/gtk-2.0/"
     #gtk-3.0
-    "$installed_dir/settings/gtk-3.0/" "$HOME/.config/gtk-3.0"
+    "$installed_dir/settings/gtk-3.0/" "$HOME/.config"
     "$installed_dir/settings/bookmarks/bookmarks" "$HOME/.config/gtk-3.0/bookmarks"
     #xorg
     "$installed_dir/settings/xorg/" "/etc/X11/xorg.conf.d/"
@@ -45,10 +45,8 @@ copyconfig_file=(
     "$installed_dir/settings/screenkey/screenkey.json" "$HOME/.config"
     #thunar
     "$installed_dir/settings/thunar/uca.xml" "$HOME/.config/thunar"
-    "$installed_dir/settings/thunar/uca.xml" "/etc/skel/.config/thunar"
     #neofetch
     "$installed_dir/settings/neofetch/config.conf" "$HOME/.config/neofetch"
-    "$installed_dir/settings/neofetch/config.conf" "/etc/skel/.config/neofetch"
     #mangohud
     "$installed_dir/settings/mangohud/" "$HOME/.config/"
     #fastfetch
@@ -58,7 +56,7 @@ copyconfig_file=(
     "$installed_dir/settings/pulseeq/presets/" "$HOME/.config/pulse/presets"
     "$installed_dir/settings/pulseeq/equalizerrc.availablepresets" "$HOME/.config/pulse"
     #autostart
-    "$installed_dir/settings/autostart/" "$HOME/.config/autostart"
+    "$installed_dir/settings/autostart/" "$HOME/.config/"
     #cursor
     "$installed_dir/settings/cursor/" "/usr/share/icons/default"
     #vitualbox
