@@ -48,8 +48,6 @@ copyconfig_file=(
     #gtk-3.0
     "$installed_dir/settings/gtk-3.0/" "$USER_HOME/.config"
     "$installed_dir/settings/bookmarks/bookmarks" "$USER_HOME/.config/gtk-3.0/bookmarks"
-    #xorg
-    "$installed_dir/settings/xorg/" "/etc/X11/xorg.conf.d/"
     #terminal files
     "$installed_dir/settings/kitty/" "$USER_HOME/.config/"
     #alacritty setup
