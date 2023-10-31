@@ -24,7 +24,7 @@ copyconfig_file=(
     "$installed_dir/settings/gtk-2.0/"* "$HOME/.config/gtk-3.0"
     #gtk-3.0
     "$installed_dir/settings/gtk-3.0/"* "$HOME/.config/gtk-3.0"
-    "$installed_dir/settings/bookmarks/bookmarks" "$HOME/.config/gtk-3.0/"
+    "$installed_dir/settings/bookmarks/bookmarks" "$HOME/.config/gtk-3.0"
     #xorg
     "$installed_dir/settings/xorg/"* "/etc/X11/xorg.conf.d/"
     #terminal files
@@ -39,30 +39,30 @@ copyconfig_file=(
     "$installed_dir/settings/fish/alias.fish" "$HOME/.config/fish/alias.fish"
     "$installed_dir/settings/fish/config.fish" "$HOME/.config/fish/config.fish"
     #variety
-    "$installed_dir/settings/variety/variety.conf" "$HOME/.config/variety/"
+    "$installed_dir/settings/variety/variety.conf" "$HOME/.config/variety"
     "$installed_dir/settings/variety/scripts/"* "$HOME/.config/variety/scripts/"
     #screenkey
-    "$installed_dir/settings/screenkey/screenkey.json" "$HOME/.config/"
+    "$installed_dir/settings/screenkey/screenkey.json" "$HOME/.config"
     #thunar
     "$installed_dir/settings/thunar/uca.xml" "$HOME/.config/Thunar"
     "$installed_dir/settings/thunar/uca.xml" "/etc/skel/.config/Thunar"
     #neofetch
-    "$installed_dir/settings/neofetch/config.conf" "$HOME/.config/neofetch/"
-    "$installed_dir/settings/neofetch/config.conf" "/etc/skel/.config/neofetch/"
+    "$installed_dir/settings/neofetch/config.conf" "$HOME/.config/neofetch"
+    "$installed_dir/settings/neofetch/config.conf" "/etc/skel/.config/neofetch"
     #mangohud
     "$installed_dir/settings/mangohud/"* "$HOME/.config/"
     #fastfetch
     #"$installed_dir/settings/fastfetch/config.conf" "/etc/fastfetch/"
     #"$installed_dir/settings/fastfetch/config.conf" "/etc/skel/.config/fastfetch/"
     #pulse audio
-    "$installed_dir/settings/pulseeq/presets/"* "$HOME/.config/pulse/presets/"
+    "$installed_dir/settings/pulseeq/presets/"* "$HOME/.config/pulse/presets"
     "$installed_dir/settings/pulseeq/equalizerrc.availablepresets" "$HOME/.config/pulse"
     #autostart
     "$installed_dir/settings/autostart/"* "$HOME/.config/autostart"
     #cursor
     "$installed_dir/settings/cursor/"* "/usr/share/icons/default"
     #vitualbox
-    "$installed_dir/settings/virtualbox-template/"* "$HOME/vm/"
+    "$installed_dir/settings/virtualbox-template/"* "$HOME/vm"
     #lightdm
     "$installed_dir/settings/lightdm/ldm/"* "/etc/lightdm"
     #emacs
@@ -76,8 +76,8 @@ copyconfig_file=(
 )
 
 vaderconfig_file=(
-    "$installed_dir/settings/xorg/config/xorg.conf" "/etc/X11/"
-    "$installed_dir/settings/monitorscale/.profile" "$HOME/"
+    "$installed_dir/settings/xorg/config/xorg.conf" "/etc/X11"
+    "$installed_dir/settings/monitorscale/.profile" "$HOME"
 )
 
 main_dir=(
@@ -115,8 +115,8 @@ main_dir=(
 ) 
 
 git_files=(
-    https://github.com/Dev8904/arto_repo.git "$HOME/github/linux/arto-repo/"
-    https://github.com/Dev8904/pkgbuild.git "$HOME/github/linux/pkgbuild/"
+    https://github.com/Dev8904/arto_repo.git "$HOME/github/linux/arto-repo"
+    https://github.com/Dev8904/pkgbuild.git "$HOME/github/linux/pkgbuild"
     https://github.com/Dev8904/arto-chadwm.git "$HOME/github/linux/packages/arto-chadwm"
     https://github.com/Dev8904/arto-skel.git "$HOME/github/linux/packages/arto-skel"
     https://github.com/Dev8904/artolinux-zsh.git "$HOME/github/linux/packages/artolinux-zsh"
@@ -140,7 +140,7 @@ git_files=(
     https://github.com/Dev8904/arto-system.git "$HOME/github/linux/packages/arto-system"
     https://github.com/Dev8904/artolinux-rofi-themes.git "$HOME/github/linux/packages/artolinux-rofi-themes"
     https://github.com/Dev8904/artolinux-rofi.git "$HOME/github/linux/packages/artolinux-rofi"
-    https://github.com/Dev8904/arto.git "$HOME/github/linux/arto/"
+    https://github.com/Dev8904/arto.git "$HOME/github/linux/arto"
 )
 
 git_clone() {
