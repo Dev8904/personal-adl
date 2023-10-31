@@ -24,18 +24,15 @@ username=$(id -u -n 1000)
 apt update
 apt upgrade -y
 
-# Install nala
-apt install nala -y
-
 # Making primary directories .config and Moving config files and background to Pictures
 cd $installed_dir
 bash general.sh
 chown -R $username:$username /home/$username
 
 # Installing Essential Programs 
-nala install feh kitty picom thunar nitrogen lxpolkit x11-xserver-utils unzip wget pulseaudio pulseeffects tlp brightnessctl pavucontrol variety build-essential libx11-dev libxft-dev libimlib2-dev libxinerama-dev -y
+apt install feh kitty picom thunar nitrogen lxpolkit x11-xserver-utils unzip wget pulseaudio pulseeffects tlp xbacklight pavucontrol variety build-essential libx11-dev libxft-dev libimlib2-dev jq libxinerama-dev -y
 # Installing Other less important Programs
-nala install neofetch flameshot psmisc mangohud code lxappearance papirus-icon-theme lxappearance meld mintstick catfish zenity gitfiend tldr fonts-noto-color-emoji lightdm -y
+apt install neofetch flameshot psmisc mangohud code lxappearance papirus-icon-theme lxappearance meld mintstick catfish zenity gitfiend tldr fonts-noto-color-emoji lightdm slick-greeter -y
 
 # Download Nordic Theme
 cd /usr/share/themes/
@@ -43,7 +40,7 @@ git clone https://github.com/EliverLara/Nordic.git
 
 # Installing fonts
 cd $installed_dir 
-nala install fonts-font-awesome -y
+apt install fonts-font-awesome -y
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
 unzip FiraCode.zip -d /usr/local/share/fonts
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip
@@ -64,8 +61,22 @@ cd Nordzy-cursors
 cd $installed_dir
 rm -rf Nordzy-cursors
 
-# Install Firefox
-nala install firefox
+# Install Murcury
+# Get .deb URL from latest release
+M_URL=$(curl -sH "https://api.github.com/repos/Alex313031/Mercury/releases/latest" | \
+          jq -r '.assets[]? | select(.name | endswith(".deb")) | .browser_download_url')
+
+# Check, download, and install
+[ -n "$M_URL" ] && curl -L -o /tmp/temp.deb "$M_URL" && sudo dpkg -i /tmp/temp.deb && rm /tmp/temp.deb || echo "Failed to find or install .deb package"
+
+#Install Thorium
+# Get .deb URL from latest release
+T_URL=$(curl -sH "https://api.github.com/repos/Alex313031/thorium/releases/latest" | \
+          jq -r '.assets[]? | select(.name | endswith(".deb")) | .browser_download_url')
+
+# Check, download, and install
+[ -n "$T_URL" ] && curl -L -o /tmp/temp.deb "$T_URL" && sudo dpkg -i /tmp/temp.deb && rm /tmp/temp.deb || echo "Failed to find or install .deb package"
+
 
 # Enable graphical login and change target from CLI to GUI
 systemctl enable lightdm
@@ -76,9 +87,6 @@ git clone https://github.com/Dev8904/mybash
 cd mybash
 bash setup.sh
 cd $installed_dir
-
-# Use nala
-bash settings/nala/usenala
 
 #general
 bash gen.sh

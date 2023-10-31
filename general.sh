@@ -213,9 +213,11 @@ for DIR in "${main_dir[@]}"; do
         check_dir "$DIR" 
     done
 #Install main configs
-    for FILES in "${copyconfig_file[@]}"; do
-        copy_files "$FILES"
-    done
+    for ((i=0; i<${#copyconfig_file[@]}; i+=2)); do
+    src="${copyconfig_file[$i]}"
+    dest="${copyconfig_file[$i+1]}"
+    copy_files "$dest" "$src"
+done
 #Install configs for lord vader
 if [[ "$ISVADER" == true ]]; then
     echo
@@ -226,9 +228,11 @@ if [[ "$ISVADER" == true ]]; then
     echo "################################################################"
     tput sgr0
     echo
-        for FILES in "${vaderconfig_file[@]}"; do
-            copy_files "$FILES" 
-        done
+    for ((i=0; i<${#vaderconfig_file[@]}; i+=2)); do
+        src="${vaderconfig_file[$i]}"
+        dest="${vaderconfig_file[$i+1]}"
+        copy_files "$dest" "$src"
+    done
     sleep 5
     #download all projects from github
     echo "Time to download github repos"
