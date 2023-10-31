@@ -97,6 +97,9 @@ cd arto-chadwm
 bash install.sh
 cd $installed_dir
 
+#install flatpaks
+bash flatpaks.sh
+
 echo "Set up complete"
 sleep 5
 exit
