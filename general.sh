@@ -218,21 +218,19 @@ copy_files()
         fi
         
         # Determine whether to use sudo based on the destination path
-        if [[ "$dest" == "$USER_HOME"* ]]; then
+        if [[ "$dest" == "$HOME"* ]]; then
+            echo "Copying: $src -> $dest"
             if [ -d "$src" ]; then
-                # Source is a directory, copy it recursively
-                cp -v -arf "$src" "$dest" >> "$INSTLOG" > /dev/null & 
+                cp -v -arf "$src" "$dest" >> "$INSTLOG"
             else
-                # Source is a file, copy it normally
-                cp -v -af "$src" "$dest" >> "$INSTLOG" > /dev/null &
+                cp -v -af "$src" "$dest" >> "$INSTLOG"
             fi
         else
+            echo "Copying with sudo: $src -> $dest"
             if [ -d "$src" ]; then
-                # Source is a directory, copy it recursively
-                sudo cp -v -arf "$src" "$dest" >> "$INSTLOG" > /dev/null &
+                sudo cp -v -arf "$src" "$dest" >> "$INSTLOG"
             else
-                # Source is a file, copy it normally
-                sudo cp -v -af "$src" "$dest" >> "$INSTLOG" > /dev/null &
+                sudo cp -v -af "$src" "$dest" >> "$INSTLOG"
             fi
         fi
     done
