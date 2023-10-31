@@ -30,9 +30,9 @@ bash general.sh
 chown -R $username:$username /home/$username
 
 # Installing Essential Programs 
-apt install feh kitty picom thunar nitrogen lxpolkit x11-xserver-utils unzip wget pulseaudio pulseeffects tlp xbacklight pavucontrol variety build-essential libx11-dev libxft-dev libimlib2-dev jq libxinerama-dev -y
+apt install feh  kitty picom thunar nitrogen lxpolkit x11-xserver-utils unzip wget pulseaudio pulseeffects tlp xbacklight pavucontrol variety build-essential libx11-dev libxft-dev libimlib2-dev jq libxinerama-dev -y
 # Installing Other less important Programs
-apt install neofetch flameshot psmisc mangohud code lxappearance papirus-icon-theme lxappearance meld mintstick catfish zenity gitfiend tldr fonts-noto-color-emoji lightdm slick-greeter -y
+apt install neofetch flameshot psmisc mangohud code lxappearance papirus-icon-theme lxappearance meld mintstick catfish zenity gitfiend tldr fonts-noto-color-emoji flatpak distrobox virt-manager lightdm slick-greeter -y
 
 # Download Nordic Theme
 cd /usr/share/themes/
