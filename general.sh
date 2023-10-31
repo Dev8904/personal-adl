@@ -135,6 +135,7 @@ main_dir=(
     "$USER_HOME/vm"
     "/etc/X11/xorg.conf.d/"
     "/etc/lightdm/backgrounds/"
+    "/etc/lightdm/lightdm.conf.d/"
 ) 
 
 git_files=(
