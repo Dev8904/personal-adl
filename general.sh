@@ -21,7 +21,7 @@ INSTLOG="install.log"
 #Personal configs
 copyconfig_file=(
     #gtk-2.0
-    "$installed_dir/settings/gtk-2.0/"* "$HOME/.config/gtk-3.0"
+    "$installed_dir/settings/gtk-2.0/"* "$HOME/.config/gtk-2.0"
     #gtk-3.0
     "$installed_dir/settings/gtk-3.0/"* "$HOME/.config/gtk-3.0"
     "$installed_dir/settings/bookmarks/bookmarks" "$HOME/.config/gtk-3.0"
@@ -189,6 +189,12 @@ copy_files()
     shift  # Remove the destination from the arguments
     # Remaining arguments are the source files
     for src in "$@"; do
+        # Check if destination exists and is a file, while source is a directory
+        if [ -f "$dest/$(basename "$src")" ] && [ -d "$src" ]; then
+            echo "Warning: Deleting file '$dest/$(basename "$src")' to copy directory '$src'"
+            rm "$dest/$(basename "$src")"
+        fi
+        
         # Determine whether to use sudo based on the destination path
         if [[ "$dest" == "$HOME"* ]]; then
             if [ -d "$src" ]; then
