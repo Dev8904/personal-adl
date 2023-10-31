@@ -78,10 +78,8 @@ copyconfig_file=(
     "$installed_dir/settings/pulseeq/equalizerrc.availablepresets" "$USER_HOME/.config/pulse"
     #autostart
     "$installed_dir/settings/autostart/" "$USER_HOME/.config/"
-    #cursor
-    "$installed_dir/settings/cursor/" "/usr/share/icons/default"
     #vitualbox
-    "$installed_dir/settings/virtualbox-template/" "$USER_HOME/vm"
+    "$installed_dir/settings/virtualbox-template/template.tar.gz" "$USER_HOME/vm/template.tar.gz"
     #lightdm
    "$installed_dir/settings/lightdm/backgrounds/wallpaper.jpg" "/etc/lightdm/backgrounds/wallpaper.jpg"
    "$installed_dir/settings/lightdm/lightdm.conf.d/100-usr.conf" "/etc/lightdm/lightdm.conf.d/100-usr.conf"
