@@ -97,7 +97,8 @@ copyconfig_file=(
 )
 
 vaderconfig_file=(
-    "$installed_dir/settings/xorg/config/xorg.conf" "/etc/X11"
+    "$installed_dir/settings/xorg/xorg.conf/" "/etc/X11"
+    "$installed_dir/settings/xorg/999-killX.conf/" "/etc/X11/xorg.conf.d"
     "$installed_dir/settings/monitorscale/.profile" "$USER_HOME"
 )
 
@@ -107,8 +108,8 @@ main_dir=(
     "/etc/X11/xorg.conf.d/"
     "$USER_HOME/.config/variety"
     "$USER_HOME/.config/thunar"
-    #"$USER_HOME/.config/neofetch
-    #"$USER_HOME/.config/pulse/presets
+    "$USER_HOME/.config/neofetch"
+    "$USER_HOME/.config/pulse/presets"
     "$USER_HOME/.config/autostart"
     "$USER_HOME/.bin"
     "$USER_HOME/pictures"
