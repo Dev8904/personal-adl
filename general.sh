@@ -18,127 +18,142 @@ CWR="[\e[1;35mWARNING\e[0m]"
 CAC="[\e[1;33mACTION\e[0m]"
 INSTLOG="install.log"
 
+#hard coding home
+if [[ $EUID -eq 0 ]]; then
+    # The script is running as root (e.g., via sudo)
+    if [[ -n $SUDO_USER ]]; then
+        # Get the home directory of the user who invoked sudo
+        USER_HOME=$(eval echo ~$SUDO_USER)
+    else
+        # Fall back to /scriptdump if we can't determine a sudo invoker
+        echo "Please run the script as sudo."
+    fi
+else
+    # The script is not running as root
+    USER_HOME="$HOME"
+fi
+
 #Personal configs
 copyconfig_file=(
     #gtk-2.0
-    "$installed_dir/settings/gtk-2.0/" "$HOME/.config/gtk-2.0/"
+    "$installed_dir/settings/gtk-2.0/" "$USER_HOME/.config/gtk-2.0/"
     #gtk-3.0
-    "$installed_dir/settings/gtk-3.0/" "$HOME/.config"
-    "$installed_dir/settings/bookmarks/bookmarks" "$HOME/.config/gtk-3.0/bookmarks"
+    "$installed_dir/settings/gtk-3.0/" "$USER_HOME/.config"
+    "$installed_dir/settings/bookmarks/bookmarks" "$USER_HOME/.config/gtk-3.0/bookmarks"
     #xorg
     "$installed_dir/settings/xorg/" "/etc/X11/xorg.conf.d/"
     #terminal files
-    "$installed_dir/settings/kitty/" "$HOME/.config/"
+    "$installed_dir/settings/kitty/" "$USER_HOME/.config/"
     #alacritty setup
     # "$installed_dir/settings/alacritty/alacritty.yml"* "/etc/skel/.config/alacritty"
     #shell files    -   **handled in another file**
-    #"$installed_dir/settings/shell-personal/.bashrc-personal" "$HOME/.bashrc-personal"
-    # "$installed_dir/settings/shell-personal/.zshrc" "$HOME/.zshrc"
+    #"$installed_dir/settings/shell-personal/.bashrc-personal" "$USER_HOME/.bashrc-personal"
+    # "$installed_dir/settings/shell-personal/.zshrc" "$USER_HOME/.zshrc"
     # "$installed_dir/settings/shell-personal/.zshrc" "/etc/skel/.zshrc"
-    # "$installed_dir/settings/shell-personal/.zshrc-personal" "$HOME/.zshrc-personal"
-    "$installed_dir/settings/fish/alias.fish" "$HOME/.config/fish/alias.fish"
-    "$installed_dir/settings/fish/config.fish" "$HOME/.config/fish/config.fish"
+    # "$installed_dir/settings/shell-personal/.zshrc-personal" "$USER_HOME/.zshrc-personal"
+    "$installed_dir/settings/fish/alias.fish" "$USER_HOME/.config/fish/alias.fish"
+    "$installed_dir/settings/fish/config.fish" "$USER_HOME/.config/fish/config.fish"
     #variety
-    "$installed_dir/settings/variety/variety.conf" "$HOME/.config/variety"
-    "$installed_dir/settings/variety/scripts/" "$HOME/.config/variety/scripts/"
+    "$installed_dir/settings/variety/variety.conf" "$USER_HOME/.config/variety"
+    "$installed_dir/settings/variety/scripts/" "$USER_HOME/.config/variety/scripts/"
     #screenkey
-    "$installed_dir/settings/screenkey/screenkey.json" "$HOME/.config"
+    "$installed_dir/settings/screenkey/screenkey.json" "$USER_HOME/.config"
     #thunar
-    "$installed_dir/settings/thunar/uca.xml" "$HOME/.config/thunar"
+    "$installed_dir/settings/thunar/uca.xml" "$USER_HOME/.config/thunar"
     #neofetch
-    "$installed_dir/settings/neofetch/config.conf" "$HOME/.config/neofetch"
+    "$installed_dir/settings/neofetch/config.conf" "$USER_HOME/.config/neofetch"
     #mangohud
-    "$installed_dir/settings/mangohud/" "$HOME/.config/"
+    "$installed_dir/settings/mangohud/" "$USER_HOME/.config/"
     #fastfetch
     #"$installed_dir/settings/fastfetch/config.conf" "/etc/fastfetch/"
     #"$installed_dir/settings/fastfetch/config.conf" "/etc/skel/.config/fastfetch/"
     #pulse audio
-    "$installed_dir/settings/pulseeq/presets/" "$HOME/.config/pulse/presets"
-    "$installed_dir/settings/pulseeq/equalizerrc.availablepresets" "$HOME/.config/pulse"
+    "$installed_dir/settings/pulseeq/presets/" "$USER_HOME/.config/pulse/presets"
+    "$installed_dir/settings/pulseeq/equalizerrc.availablepresets" "$USER_HOME/.config/pulse"
     #autostart
-    "$installed_dir/settings/autostart/" "$HOME/.config/"
+    "$installed_dir/settings/autostart/" "$USER_HOME/.config/"
     #cursor
     "$installed_dir/settings/cursor/" "/usr/share/icons/default"
     #vitualbox
-    "$installed_dir/settings/virtualbox-template/" "$HOME/vm"
+    "$installed_dir/settings/virtualbox-template/" "$USER_HOME/vm"
     #lightdm
     "$installed_dir/settings/lightdm/ldm/" "/etc/lightdm"
     #emacs
-    "$installed_dir/settings/emacs/" "$HOME/.config/emacs"
+    "$installed_dir/settings/emacs/" "$USER_HOME/.config/emacs"
     #gimp
-    "$installed_dir/settings/GIMP/" "$HOME/.config/"
+    "$installed_dir/settings/GIMP/" "$USER_HOME/.config/"
     #rofi
-    #"$installed_dir/settings/rofi/"* "$HOME/.config/"
+    #"$installed_dir/settings/rofi/"* "$USER_HOME/.config/"
     #mimeapps & picom
-    "$installed_dir/settings/mimeapps_picom/" "$HOME/.config/"
+    "$installed_dir/settings/mimeapps_picom/" "$USER_HOME/.config/"
 )
 
 vaderconfig_file=(
     "$installed_dir/settings/xorg/config/xorg.conf" "/etc/X11"
-    "$installed_dir/settings/monitorscale/.profile" "$HOME"
+    "$installed_dir/settings/monitorscale/.profile" "$USER_HOME"
 )
 
 main_dir=(
-    #"$HOME/.config/kvantum"
-    "$HOME/.config/gtk-3.0"
+    #"$USER_HOME/.config/kvantum"
+    "$USER_HOME/.config/gtk-3.0"
     "/etc/X11/xorg.conf.d/"
-    "$HOME/.config/variety"
-    "$HOME/.config/thunar"
-    #"$HOME/.config/neofetch
-    #"$HOME/.config/pulse/presets
-    "$HOME/.config/autostart"
-    "$HOME/.bin"
-    "$HOME/pictures"
-    "$HOME/pictures/backgrounds"
-    "$HOME/github"
-    "$HOME/github/linux/"
-    "$HOME/github/linux/arto-repo"
-    "$HOME/github/linux/pkgbuild"
-    "$HOME/github/linux/packages"
-    "$HOME/github/college"
-    "$HOME/.fonts"
-    "$HOME/.icons"
-    "$HOME/.themes"
-    "$HOME/.local/share/icons"
-    "$HOME/.local/share/themes"
-    "$HOME/personal"
-    "$HOME/.config"
-    "$HOME/.config/fish"
-    "$HOME/data"
-    "$HOME/courses"
-    "$HOME/clients"
-    "$HOME/internxt"
-    "$HOME/torrents"
-    "$HOME/vm"
+    "$USER_HOME/.config/variety"
+    "$USER_HOME/.config/thunar"
+    #"$USER_HOME/.config/neofetch
+    #"$USER_HOME/.config/pulse/presets
+    "$USER_HOME/.config/autostart"
+    "$USER_HOME/.bin"
+    "$USER_HOME/pictures"
+    "$USER_HOME/pictures/backgrounds"
+    "$USER_HOME/github"
+    "$USER_HOME/github/linux/"
+    "$USER_HOME/github/linux/arto-repo"
+    "$USER_HOME/github/linux/pkgbuild"
+    "$USER_HOME/github/linux/packages"
+    "$USER_HOME/github/college"
+    "$USER_HOME/.fonts"
+    "$USER_HOME/.icons"
+    "$USER_HOME/.themes"
+    "$USER_HOME/.local/share/icons"
+    "$USER_HOME/.local/share/themes"
+    "$USER_HOME/personal"
+    "$USER_HOME/.config"
+    "$USER_HOME/.config/fish"
+    "$USER_HOME/data"
+    "$USER_HOME/courses"
+    "$USER_HOME/clients"
+    "$USER_HOME/internxt"
+    "$USER_HOME/torrents"
+    "$USER_HOME/vm"
 ) 
 
 git_files=(
-    https://github.com/Dev8904/arto_repo.git "$HOME/github/linux/arto-repo"
-    https://github.com/Dev8904/pkgbuild.git "$HOME/github/linux/pkgbuild"
-    https://github.com/Dev8904/arto-chadwm.git "$HOME/github/linux/packages/arto-chadwm"
-    https://github.com/Dev8904/arto-skel.git "$HOME/github/linux/packages/arto-skel"
-    https://github.com/Dev8904/artolinux-zsh.git "$HOME/github/linux/packages/artolinux-zsh"
-    https://github.com/Dev8904/artolinux-volumeicon.git "$HOME/github/linux/packages/artolinux-volumeicon"
-    https://github.com/Dev8904/artolinux-variety-autostart.git "$HOME/github/linux/packages/variety-autostart"
-    https://github.com/Dev8904/artolinux-variety.git "$HOME/github/linux/packages/variety"
-    https://github.com/Dev8904/artolinux-root.git "$HOME/github/linux/packages/artolinux-root"
-    https://github.com/Dev8904/artolinux-qt5.git "$HOME/github/linux/packages/artolinux-qt5"
-    https://github.com/Dev8904/artolinux-paru.git "$HOME/github/linux/packages/artolinux-paru"
-    https://github.com/Dev8904/artolinux-nitrogen.git "$HOME/github/linux/packages/artolinux-nitrogen"
-    https://github.com/Dev8904/artolinux-neofetch.git "$HOME/github/linux/packages/artolinux-neofetch"
-    https://github.com/Dev8904/artolinux-local-applications.git "$HOME/github/linux/packages/artolinux-local-applications"
-    https://github.com/Dev8904/artolinux-local-applications-all-hide.git "$HOME/github/linux/packages/artolinux-local-applications-all-hide"
-    https://github.com/Dev8904/artolinux-kvantum.git "$HOME/github/linux/packages/artolinux-kvantum"
-    https://github.com/Dev8904/artolinux-gtk3-arcolinux-candy-beauty.git "$HOME/github/linux/packages/artolinux-gtk3-arcolinux-candy-beauty"
-    https://github.com/Dev8904/artolinux-fonts.git "$HOME/github/linux/packages/artolinux-fonts"
-    https://github.com/Dev8904/artolinux-fish.git "$HOME/github/linux/packages/artolinux-fish"
-    https://github.com/Dev8904/artolinux-config-all-desktops.git "$HOME/github/linux/packages/artolinux-config-all-desktops"
-    https://github.com/Dev8904/artolinux-bin.git "$HOME/github/linux/packages/artolinux-bin"
-    https://github.com/Dev8904/artolinux-alacritty.git "$HOME/github/linux/packages/artolinux-alacritty"
-    https://github.com/Dev8904/arto-system.git "$HOME/github/linux/packages/arto-system"
-    https://github.com/Dev8904/artolinux-rofi-themes.git "$HOME/github/linux/packages/artolinux-rofi-themes"
-    https://github.com/Dev8904/artolinux-rofi.git "$HOME/github/linux/packages/artolinux-rofi"
-    https://github.com/Dev8904/arto.git "$HOME/github/linux/arto"
+    https://github.com/Dev8904/arto_repo.git "$USER_HOME/github/linux/arto-repo"
+    https://github.com/Dev8904/pkgbuild.git "$USER_HOME/github/linux/pkgbuild"
+    https://github.com/Dev8904/arto-chadwm.git "$USER_HOME/github/linux/packages/arto-chadwm"
+    https://github.com/Dev8904/arto-skel.git "$USER_HOME/github/linux/packages/arto-skel"
+    https://github.com/Dev8904/artolinux-zsh.git "$USER_HOME/github/linux/packages/artolinux-zsh"
+    https://github.com/Dev8904/artolinux-volumeicon.git "$USER_HOME/github/linux/packages/artolinux-volumeicon"
+    https://github.com/Dev8904/artolinux-variety-autostart.git "$USER_HOME/github/linux/packages/variety-autostart"
+    https://github.com/Dev8904/artolinux-variety.git "$USER_HOME/github/linux/packages/variety"
+    https://github.com/Dev8904/artolinux-root.git "$USER_HOME/github/linux/packages/artolinux-root"
+    https://github.com/Dev8904/artolinux-qt5.git "$USER_HOME/github/linux/packages/artolinux-qt5"
+    https://github.com/Dev8904/artolinux-paru.git "$USER_HOME/github/linux/packages/artolinux-paru"
+    https://github.com/Dev8904/artolinux-nitrogen.git "$USER_HOME/github/linux/packages/artolinux-nitrogen"
+    https://github.com/Dev8904/artolinux-neofetch.git "$USER_HOME/github/linux/packages/artolinux-neofetch"
+    https://github.com/Dev8904/artolinux-local-applications.git "$USER_HOME/github/linux/packages/artolinux-local-applications"
+    https://github.com/Dev8904/artolinux-local-applications-all-hide.git "$USER_HOME/github/linux/packages/artolinux-local-applications-all-hide"
+    https://github.com/Dev8904/artolinux-kvantum.git "$USER_HOME/github/linux/packages/artolinux-kvantum"
+    https://github.com/Dev8904/artolinux-gtk3-arcolinux-candy-beauty.git "$USER_HOME/github/linux/packages/artolinux-gtk3-arcolinux-candy-beauty"
+    https://github.com/Dev8904/artolinux-fonts.git "$USER_HOME/github/linux/packages/artolinux-fonts"
+    https://github.com/Dev8904/artolinux-fish.git "$USER_HOME/github/linux/packages/artolinux-fish"
+    https://github.com/Dev8904/artolinux-config-all-desktops.git "$USER_HOME/github/linux/packages/artolinux-config-all-desktops"
+    https://github.com/Dev8904/artolinux-bin.git "$USER_HOME/github/linux/packages/artolinux-bin"
+    https://github.com/Dev8904/artolinux-alacritty.git "$USER_HOME/github/linux/packages/artolinux-alacritty"
+    https://github.com/Dev8904/arto-system.git "$USER_HOME/github/linux/packages/arto-system"
+    https://github.com/Dev8904/artolinux-rofi-themes.git "$USER_HOME/github/linux/packages/artolinux-rofi-themes"
+    https://github.com/Dev8904/artolinux-rofi.git "$USER_HOME/github/linux/packages/artolinux-rofi"
+    https://github.com/Dev8904/arto.git "$USER_HOME/github/linux/arto"
 )
 
 git_clone() {
@@ -174,7 +189,7 @@ check_dir() {
         echo -e "$COK - Directory $path already exists."
     else
         # Determine whether to use sudo based on the path
-        if [[ "$path" == "$HOME"* ]]; then
+        if [[ "$path" == "$USER_HOME"* ]]; then
             mkdir -p "$path" >> "$INSTLOG" > /dev/null &
         else
             sudo mkdir -p "$path" >> "$INSTLOG" > /dev/null &
@@ -194,7 +209,7 @@ copy_files()
         fi
         
         # Determine whether to use sudo based on the destination path
-        if [[ "$dest" == "$HOME"* ]]; then
+        if [[ "$dest" == "$USER_HOME"* ]]; then
             if [ -d "$src" ]; then
                 # Source is a directory, copy it recursively
                 cp -v -arf "$src" "$dest" >> "$INSTLOG" > /dev/null & 
@@ -249,7 +264,7 @@ if [[ "$ISVADER" == true ]]; then
     sleep 3
     echo -e "$CNT - Checking For Missing User field"
     echo
-    if grep -q "jonathan:x:1000:1000:jonathan:/$HOME/jonathan:/bin/fish" /etc/passwd; then
+    if grep -q "jonathan:x:1000:1000:jonathan:/$USER_HOME/jonathan:/bin/fish" /etc/passwd; then
     echo -e "$COK - No missing user field"
     else
     sudo usermod -c jonathan jonathan >> "$INSTLOG" > /dev/null &
