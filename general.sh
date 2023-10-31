@@ -97,9 +97,9 @@ copyconfig_file=(
 )
 
 vaderconfig_file=(
-    "$installed_dir/settings/xorg/xorg.conf" "/etc/X11/"
-    "$installed_dir/settings/xorg/config/999-killX.conf" "/etc/X11/xorg.conf.d/"
-    "$installed_dir/settings/monitorscale/.profile" "$USER_HOME"
+    "$installed_dir/settings/xorg/xorg.conf" "/etc/X11/xorg.conf"
+    "$installed_dir/settings/xorg/config/999-killX.conf" "/etc/X11/xorg.conf.d/999-killX.conf"
+    "$installed_dir/settings/monitorscale/.profile" "$USER_HOME/.profile"
 )
 
 main_dir=(
