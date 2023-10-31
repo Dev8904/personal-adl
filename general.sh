@@ -21,14 +21,14 @@ INSTLOG="install.log"
 #Personal configs
 copyconfig_file=(
     #gtk-2.0
-    "$installed_dir/settings/gtk-2.0/"* "$HOME/.config/gtk-2.0"
+    "$installed_dir/settings/gtk-2.0/" "$HOME/.config/gtk-2.0"
     #gtk-3.0
-    "$installed_dir/settings/gtk-3.0/"* "$HOME/.config/gtk-3.0"
-    "$installed_dir/settings/bookmarks/bookmarks" "$HOME/.config/gtk-3.0"
+    "$installed_dir/settings/gtk-3.0/" "$HOME/.config/gtk-3.0"
+    "$installed_dir/settings/bookmarks/bookmarks" "$HOME/.config/gtk-3.0/bookmarks"
     #xorg
-    "$installed_dir/settings/xorg/"* "/etc/X11/xorg.conf.d/"
+    "$installed_dir/settings/xorg/" "/etc/X11/xorg.conf.d/"
     #terminal files
-    "$installed_dir/settings/kitty/"* "$HOME/.config/"
+    "$installed_dir/settings/kitty/" "$HOME/.config/"
     #alacritty setup
     # "$installed_dir/settings/alacritty/alacritty.yml"* "/etc/skel/.config/alacritty"
     #shell files    -   **handled in another file**
@@ -40,7 +40,7 @@ copyconfig_file=(
     "$installed_dir/settings/fish/config.fish" "$HOME/.config/fish/config.fish"
     #variety
     "$installed_dir/settings/variety/variety.conf" "$HOME/.config/variety"
-    "$installed_dir/settings/variety/scripts/"* "$HOME/.config/variety/scripts/"
+    "$installed_dir/settings/variety/scripts/" "$HOME/.config/variety/scripts/"
     #screenkey
     "$installed_dir/settings/screenkey/screenkey.json" "$HOME/.config"
     #thunar
@@ -50,29 +50,29 @@ copyconfig_file=(
     "$installed_dir/settings/neofetch/config.conf" "$HOME/.config/neofetch"
     "$installed_dir/settings/neofetch/config.conf" "/etc/skel/.config/neofetch"
     #mangohud
-    "$installed_dir/settings/mangohud/"* "$HOME/.config/"
+    "$installed_dir/settings/mangohud/" "$HOME/.config/"
     #fastfetch
     #"$installed_dir/settings/fastfetch/config.conf" "/etc/fastfetch/"
     #"$installed_dir/settings/fastfetch/config.conf" "/etc/skel/.config/fastfetch/"
     #pulse audio
-    "$installed_dir/settings/pulseeq/presets/"* "$HOME/.config/pulse/presets"
+    "$installed_dir/settings/pulseeq/presets/" "$HOME/.config/pulse/presets"
     "$installed_dir/settings/pulseeq/equalizerrc.availablepresets" "$HOME/.config/pulse"
     #autostart
-    "$installed_dir/settings/autostart/"* "$HOME/.config/autostart"
+    "$installed_dir/settings/autostart/" "$HOME/.config/autostart"
     #cursor
-    "$installed_dir/settings/cursor/"* "/usr/share/icons/default"
+    "$installed_dir/settings/cursor/" "/usr/share/icons/default"
     #vitualbox
-    "$installed_dir/settings/virtualbox-template/"* "$HOME/vm"
+    "$installed_dir/settings/virtualbox-template/" "$HOME/vm"
     #lightdm
-    "$installed_dir/settings/lightdm/ldm/"* "/etc/lightdm"
+    "$installed_dir/settings/lightdm/ldm/" "/etc/lightdm"
     #emacs
-    "$installed_dir/settings/emacs/"* "$HOME/.config/emacs"
+    "$installed_dir/settings/emacs/" "$HOME/.config/emacs"
     #gimp
-    "$installed_dir/settings/GIMP/"* "$HOME/.config/"
+    "$installed_dir/settings/GIMP/" "$HOME/.config/"
     #rofi
     #"$installed_dir/settings/rofi/"* "$HOME/.config/"
     #mimeapps & picom
-    "$installed_dir/settings/mimeapps_picom/"* "$HOME/.config/"
+    "$installed_dir/settings/mimeapps_picom/" "$HOME/.config/"
 )
 
 vaderconfig_file=(
