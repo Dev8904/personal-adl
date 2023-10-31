@@ -31,6 +31,9 @@ if [[ $EUID -eq 0 ]]; then
 else
     # The script is not running as root
     USER_HOME="$HOME"
+    echo "Please run the script as sudo."
+    sleep 3 
+    exit
 fi
 
 #Personal configs
