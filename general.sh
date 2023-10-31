@@ -83,7 +83,7 @@ copyconfig_file=(
     #vitualbox
     "$installed_dir/settings/virtualbox-template/" "$USER_HOME/vm"
     #lightdm
-    "$installed_dir/settings/lightdm/ldm/" "/etc/lightdm/"
+   "$installed_dir/settings/lightdm/ldm/"* "/etc/lightdm/"
     #emacs
     "$installed_dir/settings/emacs/" "$USER_HOME/.config/emacs"
     #gimp
