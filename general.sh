@@ -207,7 +207,9 @@ copy_files()
                 sudo cp -v -af "$src" "$dest" >> "$INSTLOG" > /dev/null &
             fi
         fi
+    done
 }
+
 #Create Directories
 for DIR in "${main_dir[@]}"; do
         check_dir "$DIR" 
