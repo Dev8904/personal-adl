@@ -18,6 +18,14 @@ CWR="[\e[1;35mWARNING\e[0m]"
 CAC="[\e[1;33mACTION\e[0m]"
 INSTLOG="install.log"
 
+#Find the Hostname
+if grep -q "vader" /etc/hostname; then
+    ISVADER=true
+    echo -e "$CAT - Hello Lord Vader"
+else
+    ISVADER=false
+fi
+
 #hard coding home
 if [[ $EUID -eq 0 ]]; then
     # The script is running as root (e.g., via sudo)
