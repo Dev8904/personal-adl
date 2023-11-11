@@ -32,7 +32,7 @@ chown -R $username:$username /home/$username
 # Installing Essential Programs 
 apt install curl feh picom thunar nitrogen lxpolkit x11-xserver-utils unzip wget pulseaudio pulseeffects tlp xbacklight pavucontrol variety build-essential libx11-dev libxft-dev libimlib2-dev jq libxinerama-dev xdg-utils libu2f-udev fonts-liberation -y
 # Installing Other less important Programs
-apt install neofetch flameshot psmisc mangohud code lxappearance papirus-icon-theme lxappearance meld mintstick catfish zenity gitfiend tldr fonts-noto-color-emoji flatpak distrobox virt-manager -y
+apt install neofetch flameshot psmisc mangohud lxappearance papirus-icon-theme lxappearance meld mintstick catfish zenity tldr fonts-noto-color-emoji flatpak distrobox virt-manager -y
 
 # Download Nordic Theme
 cd /usr/share/themes/
