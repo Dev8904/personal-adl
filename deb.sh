@@ -122,3 +122,7 @@ bash flatpaks.sh
 echo "Set up complete"
 sleep 5
 exit
+
+
+#dependencies mercury
+libdbus-glib-1-2 libgdk-pixbuf2.0-0
