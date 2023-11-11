@@ -49,7 +49,7 @@ copyconfig_file=(
     "$installed_dir/settings/gtk-3.0/" "$USER_HOME/.config"
     "$installed_dir/settings/bookmarks/bookmarks" "$USER_HOME/.config/gtk-3.0/bookmarks"
     #terminal files
-    "$installed_dir/settings/kitty/" "$USER_HOME/.config/"
+    #"$installed_dir/settings/kitty/" "$USER_HOME/.config/"
     #alacritty setup
     # "$installed_dir/settings/alacritty/alacritty.yml"* "/etc/skel/.config/alacritty"
     #shell files    -   **handled in another file**
