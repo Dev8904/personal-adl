@@ -56,8 +56,6 @@ core_stage=(
     linux-firmware
     linux-firmware-qlogic
     linux-firmware-marvell
-    lightdm
-    lightdm-slick-greeter
     lsscsi
     lvm2
     mc
@@ -429,7 +427,6 @@ btrfs_stage=(
     snapper-support
 )
 services_enable=(
-    lightdm.service lightdm
     avahi-daemon.service avahi-daemon
     ntpd.service ntpd
     bluetooth.service bluetooth

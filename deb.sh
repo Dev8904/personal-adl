@@ -30,9 +30,9 @@ bash general.sh
 chown -R $username:$username /home/$username
 
 # Installing Essential Programs 
-apt install curl feh  kitty picom thunar nitrogen lxpolkit x11-xserver-utils unzip wget pulseaudio pulseeffects tlp xbacklight pavucontrol variety build-essential libx11-dev libxft-dev libimlib2-dev jq libxinerama-dev -y
+apt install curl feh kitty picom thunar nitrogen lxpolkit x11-xserver-utils unzip wget pulseaudio pulseeffects tlp xbacklight pavucontrol variety build-essential libx11-dev libxft-dev libimlib2-dev jq libxinerama-dev xdg-utils libu2f-udev fonts-liberation -y
 # Installing Other less important Programs
-apt install neofetch flameshot psmisc mangohud code lxappearance papirus-icon-theme lxappearance meld mintstick catfish zenity gitfiend tldr fonts-noto-color-emoji flatpak distrobox virt-manager lightdm slick-greeter -y
+apt install neofetch flameshot psmisc mangohud code lxappearance papirus-icon-theme lxappearance meld mintstick catfish zenity gitfiend tldr fonts-noto-color-emoji flatpak distrobox virt-manager -y
 
 # Download Nordic Theme
 cd /usr/share/themes/
@@ -61,13 +61,20 @@ cd Nordzy-cursors
 cd $installed_dir
 rm -rf Nordzy-cursors
 
-# Install Murcury
-# Get .deb URL from latest release
+# Install Mercury
+# Get .deb URL from the latest release
 M_URL=$(curl -sH "https://api.github.com/repos/Alex313031/Mercury/releases/latest" | \
-          jq -r '.assets[]? | select(.name | endswith(".deb")) | .browser_download_url')
+          jq -r '.assets[] | select(.name | endswith(".deb")) | .browser_download_url')
 
 # Check, download, and install
-[ -n "$M_URL" ] && curl -L -o /tmp/temp.deb "$M_URL" && sudo dpkg -i /tmp/temp.deb && rm /tmp/temp.deb || echo "Failed to find or install .deb package"
+if [ -n "$M_URL" ]; then
+    wget -O /tmp/temp.deb "$M_URL"
+    sudo dpkg -i /tmp/temp.deb
+    rm /tmp/temp.deb
+else
+    echo "Failed to find or install .deb package"
+fi
+
 
 #Install Thorium
 # Get .deb URL from latest release
@@ -75,11 +82,18 @@ T_URL=$(curl -sH "https://api.github.com/repos/Alex313031/thorium/releases/lates
           jq -r '.assets[]? | select(.name | endswith(".deb")) | .browser_download_url')
 
 # Check, download, and install
-[ -n "$T_URL" ] && curl -L -o /tmp/temp.deb "$T_URL" && sudo dpkg -i /tmp/temp.deb && rm /tmp/temp.deb || echo "Failed to find or install .deb package"
+if [ -n "$T_URL" ]; then
+    wget -O /tmp/temp.deb "$T_URL"
+    sudo dpkg -i /tmp/temp.deb
+    rm /tmp/temp.deb
+else
+    echo "Failed to find or install .deb package"
+fi
+
 
 
 # Enable graphical login and change target from CLI to GUI
-systemctl enable lightdm
+systemctl enable ly.service
 systemctl set-default graphical.target
 
 # Beautiful bash
