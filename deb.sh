@@ -90,6 +90,11 @@ else
     echo "Failed to find or install .deb package"
 fi
 
+#ly install
+git clone --recurse-submodules https://github.com/fairyglade/ly
+
+cd ly
+sudo make install installsystemd
 
 
 # Enable graphical login and change target from CLI to GUI
