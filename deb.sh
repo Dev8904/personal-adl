@@ -32,7 +32,7 @@ chown -R $username:$username /home/$username
 # Installing Essential Programs 
 apt install curl feh picom thunar nitrogen lxpolkit x11-xserver-utils unzip wget pulseaudio pulseeffects tlp xbacklight pavucontrol variety build-essential libx11-dev libxft-dev libimlib2-dev jq libxinerama-dev xdg-utils libu2f-udev fonts-liberation which -y
 # Installing Other less important Programs
-apt install neofetch flameshot psmisc mangohud lxappearance papirus-icon-theme lxappearance meld mintstick catfish zenity tldr fonts-noto-color-emoji flatpak distrobox virt-manager -y
+apt install flameshot psmisc mangohud lxappearance papirus-icon-theme lxappearance meld mintstick catfish zenity tldr fonts-noto-color-emoji flatpak distrobox virt-manager -y
 
 # Download Nordic Theme
 cd /usr/share/themes/
@@ -75,7 +75,6 @@ else
     echo "Failed to find or install .deb package"
 fi
 
-
 #Install Thorium
 # Get .deb URL from latest release
 T_URL=$(curl -sH "https://api.github.com/repos/Alex313031/thorium/releases/latest" | \
@@ -96,6 +95,7 @@ git clone --recurse-submodules https://github.com/fairyglade/ly
 cd ly
 sudo make install installsystemd
 
+cd $installed_dir
 
 # Enable graphical login and change target from CLI to GUI
 systemctl enable ly.service
@@ -110,19 +110,15 @@ cd $installed_dir
 #general
 bash gen.sh
 
+#install flatpaks
+bash flatpaks.sh
+
 #install dwm
 git clone https://github.com/Dev8904/arto-chadwm
 cd arto-chadwm
 bash install.sh
 cd $installed_dir
 
-#install flatpaks
-bash flatpaks.sh
-
 echo "Set up complete"
 sleep 5
 exit
-
-
-#dependencies mercury
-libdbus-glib-1-2 libgdk-pixbuf2.0-0
