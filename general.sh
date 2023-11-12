@@ -67,11 +67,11 @@ copyconfig_file=(
     #thunar
     "$installed_dir/settings/thunar/uca.xml" "$USER_HOME/.config/thunar"
     #neofetch
-    "$installed_dir/settings/neofetch/config.conf" "$USER_HOME/.config/neofetch"
+    #"$installed_dir/settings/neofetch/config.conf" "$USER_HOME/.config/neofetch"
     #mangohud
     "$installed_dir/settings/mangohud/" "$USER_HOME/.config/"
     #fastfetch
-    #"$installed_dir/settings/fastfetch/config.conf" "/etc/fastfetch/"
+    "$installed_dir/settings/fastfetch/config.conf" "/etc/fastfetch/"
     #"$installed_dir/settings/fastfetch/config.conf" "/etc/skel/.config/fastfetch/"
     #pulse audio
     "$installed_dir/settings/pulseeq/presets/" "$USER_HOME/.config/pulse/presets"
@@ -105,8 +105,9 @@ main_dir=(
     "$USER_HOME/.config/pulse/presets"
     "$USER_HOME/.config/autostart"
     "$USER_HOME/.bin"
-    "$USER_HOME/pictures"
-    "$USER_HOME/pictures/backgrounds"
+    "$USER_HOME/Pictures"
+    "$USER_HOME/Documents"
+    "$USER_HOME/Videos"
     "$USER_HOME/github"
     "$USER_HOME/github/linux/"
     "$USER_HOME/github/linux/arto-repo"
