@@ -73,12 +73,6 @@ flatpaks=(
 install_flatpaks() {
     package_name="$1"
 
-    # Check if Flatpak is installed
-    if ! command -v flatpak &>/dev/null; then
-        echo "Flatpak is not installed. Please install Flatpak and try again."
-        exit 1
-    fi
-
     # Install the Flatpak package
     flatpak install -y flathub "$package_name"
 
