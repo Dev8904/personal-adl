@@ -32,7 +32,7 @@ chown -R $username:$username /home/$username
 # Installing Essential Programs 
 apt install curl feh picom thunar nitrogen lxpolkit x11-xserver-utils unzip wget pulseaudio pulseaudio-equalizer tlp xbacklight pavucontrol variety build-essential libx11-dev libxft-dev libimlib2-dev jq libxinerama-dev xdg-utils libu2f-udev fonts-liberation which -y
 # Installing Other less important Programs
-apt install flameshot psmisc mangohud lxappearance papirus-icon-theme lxappearance meld mintstick catfish zenity tldr fonts-noto-color-emoji flatpak distrobox virt-manager -y
+apt install flameshot psmisc mangohud lxappearance papirus-icon-theme lxappearance meld mintstick catfish zenity tldr fonts-noto-color-emoji flatpak distrobox virt-manager gamemode -y
 
 # Download Nordic Theme
 cd /usr/share/themes/
@@ -61,33 +61,24 @@ cd Nordzy-cursors
 cd $installed_dir
 rm -rf Nordzy-cursors
 
-# Install Mercury
-# Get .deb URL from the latest release
-M_URL=$(curl -sH "https://api.github.com/repos/Alex313031/Mercury/releases/latest" | \
-          jq -r '.assets[] | select(.name | endswith(".deb")) | .browser_download_url')
+#install wine
+sudo dpkg --add-architecture i386 
+sudo mkdir -pm755 /etc/apt/keyrings
+sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources
 
-# Check, download, and install
-if [ -n "$M_URL" ]; then
-    wget -O /tmp/temp.deb "$M_URL"
-    sudo dpkg -i /tmp/temp.deb
-    rm /tmp/temp.deb
-else
-    echo "Failed to find or install .deb package"
-fi
+#run update & finish installing wine
+sudo apt update
+sudo apt install --install-recommends winehq-stable
 
-#Install Thorium
-# Get .deb URL from latest release
-T_URL=$(curl -sH "https://api.github.com/repos/Alex313031/thorium/releases/latest" | \
-          jq -r '.assets[]? | select(.name | endswith(".deb")) | .browser_download_url')
+#install just
+git clone 'https://mpr.makedeb.org/just'
+cd just
+makedeb -si
+cd .. 
+#cleanup
+sudo rm -r -v just/
 
-# Check, download, and install
-if [ -n "$T_URL" ]; then
-    wget -O /tmp/temp.deb "$T_URL"
-    sudo dpkg -i /tmp/temp.deb
-    rm /tmp/temp.deb
-else
-    echo "Failed to find or install .deb package"
-fi
 
 #ly install
 git clone --recurse-submodules https://github.com/fairyglade/ly
@@ -112,6 +103,9 @@ bash gen.sh
 
 #install flatpaks
 bash flatpaks.sh
+
+#install git projects
+bash builds.sh
 
 #install dwm
 git clone https://github.com/Dev8904/arto-chadwm

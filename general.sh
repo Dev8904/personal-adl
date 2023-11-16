@@ -88,6 +88,8 @@ copyconfig_file=(
     #"$installed_dir/settings/rofi/"* "$USER_HOME/.config/"
     #mimeapps & picom
     "$installed_dir/settings/mimeapps_picom/" "$USER_HOME/.config/"
+    #game optimization
+    "$installed_dir/settings/general_system/80-gamecompatibility.conf" "/etc/sysctl.d/80-gamecompatibility.conf"
 )
 
 vaderconfig_file=(
@@ -274,6 +276,7 @@ if [[ "$ISVADER" == true ]]; then
     echo -e "$COK - Missing User Field Has Been Fixed"
     fi
 fi
+
 echo "Finished general config"
 sleep 3
 exit
